@@ -1,12 +1,12 @@
 <?php 
-if ( ! class_exists( 'SJVccModel' ) ) {
+if ( ! class_exists( 'SJEaModel' ) ) {
 	
 	/**
 	* Responsible for include modules.
 	*
 	* @since 0.1
 	*/
-	final class SJVccModel {
+	final class SJEaModel {
 		/**
 		 * Initialize hooks.
 		 *
@@ -15,10 +15,20 @@ if ( ! class_exists( 'SJVccModel' ) ) {
 		 */
 		static public function init() {
 			
-			
+			add_action('elementor/widgets/widgets_registered', __CLASS__ . '::add_modules');
 		}
 
+		/**
+		 * Initialize Modules.
+		 *
+		 * @since 0.1 
+		 * @return void
+		 */
+		static public function add_modules() {
+			
+			include	 SJ_EA_DIR . 'modules/sjea-row-separator/sjea-row-separator.php';
+		}		
 	}
 
-	SJVccModel::init();
+	SJEaModel::init();
 }
