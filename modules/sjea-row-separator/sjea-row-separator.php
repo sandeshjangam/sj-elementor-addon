@@ -13,6 +13,10 @@ class Widget_SJEaRowSeparator extends Widget_Base {
 		return __( 'SJEA - Row Separator', 'elementor' );
 	}
 
+	public static function get_type() {
+	 	return 'sjea';
+	 } 
+
 	public function get_icon() {
 		return 'divider-shape';
 	}
@@ -93,12 +97,28 @@ class Widget_SJEaRowSeparator extends Widget_Base {
 	}
 
 	protected function render( ) {
-        
+        $node_id = $this->get_id();
+		$name = $this->get_name();
         $settings = $this->get_settings();
+        
+        $this->enqueue_scripts();
+        
+
+        // var_dump( Plugin::instance()->editor->is_edit_mode() );
+        //var_dump( Plugin::instance()->preview->is_preview_mode() );
 		
 		include SJ_EA_DIR . 'modules/sjea-row-separator/includes/frontend.php';
 	}
 
+	public function enqueue_scripts() {
+		$module_url = SJ_EA_URL . 'modules/sjea-row-separator/';
+		$module_dir = SJ_EA_DIR . 'modules/sjea-row-separator/';
+
+		wp_enqueue_style( 'sjea-row-separator-css', $module_url . 'css/sjea-row-separator.css', array(), SJ_EA_VERSION );
+
+		//var_dump( 'sandehffff' );
+		//var_dump( $_POST );
+	}
 
 }
 Plugin::instance()->widgets_manager->register_widget_type( new Widget_SJEaRowSeparator() );
