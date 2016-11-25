@@ -101,7 +101,7 @@ class Widget_SJEaRowSeparator extends Widget_Base {
 		$name = $this->get_name();
         $settings = $this->get_settings();
         
-        $this->enqueue_scripts();
+       SJEaModuleScripts::sjea_row_separator();
         
 
         // var_dump( Plugin::instance()->editor->is_edit_mode() );
@@ -110,7 +110,7 @@ class Widget_SJEaRowSeparator extends Widget_Base {
 		include SJ_EA_DIR . 'modules/sjea-row-separator/includes/frontend.php';
 	}
 
-	public function enqueue_scripts() {
+	static public function enqueue_scripts() {
 		$module_url = SJ_EA_URL . 'modules/sjea-row-separator/';
 		$module_dir = SJ_EA_DIR . 'modules/sjea-row-separator/';
 

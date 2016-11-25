@@ -57,7 +57,7 @@ echo '<div class="'. $class . '">';
 	}else if($separator_style == 'waves') {
 		$is_svg = true;
 		$separator_class .= ' sjea-wave-separator sjea-has-svg';
-		$svg_html = '<svg class="wave-inner-separator uasvg-wave-separator" xmlns="http://www.w3.org/2000/svg" version="1.1" fill="'.$separator_color.'" width="100%" height="'.$separator_height.'" viewBox="0 -0.5 300 21" enable-background="new 0 -0.5 300 21" preserveAspectRatio="none">
+		$svg_html = '<svg class="wave-inner-separator uasvg-wave-separator" xmlns="http://www.w3.org/2000/svg" version="1.1" fill="'.$separator_color.'" width="100%" height="20" viewBox="0 -0.5 300 21" enable-background="new 0 -0.5 300 21" preserveAspectRatio="none">
 				<path fill="'.$separator_color.'" d="M9.997-0.5c0,11.044,2.239,20,5,20h-10C2.292,19.5,0.087,10.898,0,0.16V19.5h4.997
 					C7.758,19.5,9.997,10.544,9.997-0.5z M19.998-0.5c0,11.044,2.239,20,5,20h-10C17.758,19.5,19.997,10.544,19.998-0.5z M29.998-0.5
 					c0,11.044,2.239,20,5,20h-10C27.759,19.5,29.998,10.544,29.998-0.5z M39.998-0.5c0,11.044,2.239,20,5,20h-10

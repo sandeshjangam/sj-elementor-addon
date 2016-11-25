@@ -52,6 +52,7 @@ if ( ! class_exists( 'SJEaLoader' ) ) {
 		static private function load_files()
 		{
 			/* Required Main File */
+			require_once SJ_EA_DIR . 'classes/class-sj-ea-module-scripts.php';
 			require_once SJ_EA_DIR . 'classes/class-sj-ea-model.php';
 
 			/* Includes */
