@@ -1,11 +1,22 @@
 /* Row Separator CSS */
+.elementor-editor-active .elementor.elementor-edit-mode .elementor-widget-sjea-row-separator.elementor-element.elementor-widget-empty {
+    height: 0px;
+}
+.elementor-editor-active .sjea-row-separator.sjea-row-separator-overlap {
+    position: static;
+}
 
 .sjea-row-separator {
-    position: absolute;
+    /*position: absolute;*/
     width: 100%;
     left: 0;
     z-index: 1;
     overflow: hidden;
+}
+
+.sjea-row-separator.sjea-row-separator-overlap {
+    position: absolute;
+    z-index: -1;
 }
 
 .sjea-above-row-separator {

@@ -5,11 +5,19 @@ $enable_separator	= $settings['enable_separator'];
 $separator_style	= $settings['separator_style'];
 $separator_color	= $settings['separator_color'];
 $separator_height	= $settings['separator_height'];
+$overlap_seperator	= $settings['overlap_seperator'];
+
 $separator_class = '';
 $is_svg 		 = false;
 $svg_html		 = '';
 
+
 $extra_class = ' sjea-' . $enable_separator . '-row-separator ';
+
+if ( $overlap_seperator == 'yes' ) {
+	$extra_class .= ' sjea-row-separator-overlap ';
+}
+
 $class = $name ." sjea-row-separator-" . $node_id . " ". $extra_class;
 
 

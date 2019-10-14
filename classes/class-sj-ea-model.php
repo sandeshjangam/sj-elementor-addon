@@ -27,7 +27,8 @@ if ( ! class_exists( 'SJEaModel' ) ) {
 		static public function add_modules() {
 			
 			include	 SJ_EA_DIR . 'modules/sjea-row-separator/sjea-row-separator.php';
-			include	 SJ_EA_DIR . 'modules/sjea-dual-button/sjea-dual-button.php';
+			include	 SJ_EA_DIR . 'modules/sjea-image-separator/sjea-image-separator.php';
+			include	 SJ_EA_DIR . 'modules/sjea-subscribe-form/sjea-subscribe-form.php';
 		}		
 	}
 
