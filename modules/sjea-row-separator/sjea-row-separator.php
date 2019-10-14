@@ -10,15 +10,19 @@ class Widget_SJEaRowSeparator extends Widget_Base {
 	}
 
 	public function get_title() {
-		return __( 'SJEA - Row Separator', 'elementor' );
+		return __( 'SJEA - Row Separator', 'sjea' );
 	}
 
-	public static function get_type() {
+	public function get_categories() {
+		return [ 'sjea-elements' ];
+	}
+
+	/*public static function get_type() {
 	 	return 'sjea';
-	 } 
+	 }*/ 
 
 	public function get_icon() {
-		return 'divider-shape';
+		return 'eicon-divider-shape';
 	}
 
 	protected function _register_controls() {
@@ -26,18 +30,18 @@ class Widget_SJEaRowSeparator extends Widget_Base {
         $this->start_controls_section(
             'general_section',
             [
-                'label' => __( 'General Setting', 'elementor' )
+                'label' => __( 'General Setting', 'sjea' )
             ]
         );
 
 		$this->add_control(
 				'enable_separator',
 				[
-						'label' => __( 'Enable Separator', 'elementor' ),
+						'label' => __( 'Enable Separator', 'sjea' ),
 						'type' => Controls_Manager::SELECT,
 						'options' => [
-								'above' => __( 'Top Separator', 'elementor' ),
-								'below' => __( 'Bottom Separator', 'elementor' ),
+								'above' => __( 'Top Separator', 'sjea' ),
+								'below' => __( 'Bottom Separator', 'sjea' ),
 						],
 						'default' => 'above',
 
@@ -47,21 +51,21 @@ class Widget_SJEaRowSeparator extends Widget_Base {
 		$this->add_control(
 				'separator_style',
 				[
-						'label' => __( 'Separator Style', 'elementor' ),
+						'label' => __( 'Separator Style', 'sjea' ),
 						'type' => Controls_Manager::SELECT,
 						'options' => [
-							'triangle_svg'		 	=>	__( 'Triangle', 'elementor' ),
-							'xlarge_triangle'		=>	__( 'Big Triangle', 'elementor' ),
-							'xlarge_triangle_left'	=>	__( 'Big Triangle Left', 'elementor' ),
-							'xlarge_triangle_right'	=>	__( 'Big Triangle Right', 'elementor' ),
-							'circle_svg'		 	=>	__( 'Half Circle', 'elementor' ),
-							'xlarge_circle'		 	=>	__( 'Curve Center', 'elementor' ),
-							'curve_up'		 		=>	__( 'Curve Left', 'elementor' ),
-							'curve_down'		 	=>	__( 'Curve Right', 'elementor' ),
-							'tilt_left'		 		=>	__( 'Tilt Left', 'elementor' ),
-							'tilt_right'		 	=>	__( 'Tilt Right', 'elementor' ),
-							'waves'		 			=>	__( 'Waves', 'elementor' ),
-							'clouds'		 		=>	__( 'Clouds', 'elementor' )
+							'triangle_svg'		 	=>	__( 'Triangle', 'sjea' ),
+							'xlarge_triangle'		=>	__( 'Big Triangle', 'sjea' ),
+							'xlarge_triangle_left'	=>	__( 'Big Triangle Left', 'sjea' ),
+							'xlarge_triangle_right'	=>	__( 'Big Triangle Right', 'sjea' ),
+							'circle_svg'		 	=>	__( 'Half Circle', 'sjea' ),
+							'xlarge_circle'		 	=>	__( 'Curve Center', 'sjea' ),
+							'curve_up'		 		=>	__( 'Curve Left', 'sjea' ),
+							'curve_down'		 	=>	__( 'Curve Right', 'sjea' ),
+							'tilt_left'		 		=>	__( 'Tilt Left', 'sjea' ),
+							'tilt_right'		 	=>	__( 'Tilt Right', 'sjea' ),
+							'waves'		 			=>	__( 'Waves', 'sjea' ),
+							'clouds'		 		=>	__( 'Clouds', 'sjea' )
 						],
 						'default' => 'xlarge_triangle',
 
@@ -71,7 +75,7 @@ class Widget_SJEaRowSeparator extends Widget_Base {
 		$this->add_control(
 				'separator_color',
 				[
-						'label' => __( 'Separator Color', 'elementor' ),
+						'label' => __( 'Separator Color', 'sjea' ),
 						'type' => Controls_Manager::COLOR,
 						'scheme' => [
 								'type' => Scheme_Color::get_type(),
@@ -87,38 +91,39 @@ class Widget_SJEaRowSeparator extends Widget_Base {
 				'separator_height',
 				[
 						'type' => Controls_Manager::NUMBER,
-						'label' => __( 'Separator Height (in px)', 'elementor' ),
-						'placeholder' => __( '75', 'elementor' ),
-						'default' => __( '75', 'elementor' ),
+						'label' => __( 'Separator Height (in px)', 'sjea' ),
+						'placeholder' => __( '100', 'sjea' ),
+						'default' => __( '100', 'sjea' ),
 				]
+		);
+
+		$this->add_control(
+		    'overlap_seperator',
+		    [
+		        'label' => __( 'Overlap Row Separator', 'sjea' ),
+		        'type' => Controls_Manager::SWITCHER,
+		        'default' => '',
+		        'label_on' => __( 'Yes', 'sjea' ),
+		        'label_off' => __( 'No', 'sjea' ),
+		        'return_value' => 'yes',
+		    ]
 		);
 
 		$this->end_controls_section();
 	}
 
 	protected function render( ) {
-        $node_id = $this->get_id();
+		$node_id = $this->get_id();
 		$name = $this->get_name();
-        $settings = $this->get_settings();
-        
-       SJEaModuleScripts::sjea_row_separator();
-        
+		$settings = $this->get_settings();
 
-        // var_dump( Plugin::instance()->editor->is_edit_mode() );
-        //var_dump( Plugin::instance()->preview->is_preview_mode() );
-		
+		SJEaModuleScripts::sjea_row_separator();
+
+		// var_dump( Plugin::instance()->editor->is_edit_mode() );
+		//var_dump( Plugin::instance()->preview->is_preview_mode() );
+
 		include SJ_EA_DIR . 'modules/sjea-row-separator/includes/frontend.php';
 	}
-
-	static public function enqueue_scripts() {
-		$module_url = SJ_EA_URL . 'modules/sjea-row-separator/';
-		$module_dir = SJ_EA_DIR . 'modules/sjea-row-separator/';
-
-		wp_enqueue_style( 'sjea-row-separator-css', $module_url . 'css/sjea-row-separator.css', array(), SJ_EA_VERSION );
-
-		//var_dump( 'sandehffff' );
-		//var_dump( $_POST );
-	}
-
 }
+
 Plugin::instance()->widgets_manager->register_widget_type( new Widget_SJEaRowSeparator() );

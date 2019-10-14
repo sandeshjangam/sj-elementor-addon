@@ -35,7 +35,7 @@ if ( ! class_exists( 'SJEaLoader' ) ) {
 		 * @return void
 		 */ 
 		static private function define_constants() {	
-			define('SJ_EA_VERSION', '0.1');
+			define('SJ_EA_VERSION', '0.2.0');
 			define('SJ_EA_FILE', trailingslashit(dirname(dirname(__FILE__))) . 'sj-elementor-addon.php');
 			define('SJ_EA_PLUGIN_BASE', plugin_basename( SJ_EA_FILE ) );
 			define('SJ_EA_DIR', plugin_dir_path( SJ_EA_FILE ) );
@@ -51,7 +51,13 @@ if ( ! class_exists( 'SJEaLoader' ) ) {
 		 */ 
 		static private function load_files()
 		{
+			require_once SJ_EA_DIR . 'classes/class-sj-ea-model-helper.php';
+			require_once SJ_EA_DIR . 'classes/class-sj-ea-ajax.php';
+			require_once SJ_EA_DIR . 'classes/class-sj-ea-services.php';
+			require_once SJ_EA_DIR . 'classes/class-sj-ea-admin-settings.php';
+
 			/* Required Main File */
+			require_once SJ_EA_DIR . 'classes/class-sj-ea-helper.php';
 			require_once SJ_EA_DIR . 'classes/class-sj-ea-module-scripts.php';
 			require_once SJ_EA_DIR . 'classes/class-sj-ea-model.php';
 
